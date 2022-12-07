@@ -12,7 +12,10 @@ html {
 }
 
 body{
-  background-color: #161616;
+  color: var(--text-color);
+}
+
+a{
   color: var(--text-color);
 }
 
@@ -21,9 +24,9 @@ body{
 }
 
 .card-category{
-  background-color: var(--color-primary);
+  color: var(--color-primary);
 }
 
 .section-tagline{
-  background-color: var(--color-primary);
+  color: var(--color-primary);
 }
