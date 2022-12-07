@@ -536,6 +536,6 @@ a:active{
   margin-left: auto;
 }
 
-footer{
+.footer{
   padding: var(--footer-padding);
 }
