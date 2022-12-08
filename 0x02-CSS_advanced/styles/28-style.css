@@ -482,6 +482,10 @@ html {
   font-size: 62.5%;
 }
 
+.header{
+  padding: var(--header-padding);
+}
+
 .header-logo{
   position: var(--header-logo-position);
 }
