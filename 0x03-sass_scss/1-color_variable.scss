@@ -1,0 +1,6 @@
+/* Assign text color to html tags with a variable */
+$textColor: #3D3D3D;
+
+body,p {
+  color: $textColor;
+}
