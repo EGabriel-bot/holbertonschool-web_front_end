@@ -779,13 +779,13 @@ ul.row {
       flex-direction: column;
     }
 
-    .post-meta-list  strong{
+    .post-meta-list strong{
       color: var(--color-primary);
       font-size: var(--font-size-small);
       text-transform: uppercase;
       display: block;
     }
-    .post-meta-list [class^="post-meta-"]{
+    .post-meta-list [class*="post-meta-"]{
       margin-bottom: 1rem;
       padding-bottom: 1rem;
       border-bottom: 0.2rem solid var(--color-light-grey);
