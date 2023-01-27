@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>Login to the website</h2>
+  <div>
+    <input type="text" id="firstname">
+    <input type="email" id="email">
+    <button onclick="setCookies()">Log me in</button>
+  </div>
+  <h2>Cookies</h2>
+  <button onclick="showCookies()">Show the cookies</button>
+  <script type="application/javascript">
+
+    function setCookies(){
+      const name = document.getElementById('firstname').value;
+      const eValue = document.getElementById('email').value;
+      let date = new Date();
+      date.setDate(date.getDate() + 10);
+
+      document.cookie = `firstname=${name};expires=${date};SameSite=none;Secure;path=/`;
+      document.cookie = `email=${eValue};expires=${date};SameSite=none;Secure;path=/`;
+      console.log(document.cookie);
+    }
+
+    function showCookies(){
+      const cookie = document.cookie.split(';');
+      const dcookie = document.createElement('p');
+      let name = cookie[0].split('=');
+      let email = cookie[1].split('=');
+
+      name.splice(0,1);
+      email.splice(0,1);
+      name.toString();
+      email.toString();
+      
+      dcookie.innerHTML = `Email: ${email} - Firstname: ${name}`;
+      document.body.append(dcookie);
+    }
+
+    function getCookie(name){
+      let cname = `${name}=`
+      const cookie = document.cookie
+      const decoded = decodeURIComponent(cookie).split(';');
+
+      for (let i = 0; i < decoded.length; i++){
+        // go thorugh the array of cookies
+        let items = decoded[i];
+        while (items.charAt(0) === ' ') {
+        // go through each string and once a whitespce is found
+        // reassign value of each string from the index after the whitespace
+          items = items.substring(1);
+        }
+        if (items.indexOf(name) === 0){
+        // if index matches 'cookie=' then return whatever is after the equal sign
+        // substring(start, end) starts after the '='
+          return items.substring(cname.length, items.length)
+        }
+        return "";
+      }
+    }
+
+  </script>
+</body>
+
+</html>
