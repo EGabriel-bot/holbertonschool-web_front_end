@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 0</title>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+
+      <script type="application/javascript">
+
+            function createSearchForm() {
+                $('body').append('<input type="text" id="search"></input>', '<input type="submit" id="submit"></input>', '<ul></ul>');
+                $('#submit-btn').click(function () {
+                    const searchValue = $('#search').val();
+                    queryWikipedia(searchValue);
+                });
+            }
+            function addNewArticle (id, title, snippet) {
+                $('ul').append('<li></li>');
+                $('ul > li:last').append('<p><span>${id} - <b>${title}</b></span></p>', '<p>${snippet}</p>>')
+            }
+            function queryWikipedia(search) {
+                $.get('https://en.wikipedia.org/w/api.php', {
+                        action: 'query',
+                        list: 'search',
+                        srsearch: search,
+                        format: 'json',
+                        origin: '*'
+                    }).done(function (data) {
+                        data.query.search.forEach(function (item) {
+                            addNewArticle(item.pageid, item.title, item.snippet);
+                        })
+                    })
+                
+            }
+
+            $(document).ready(createSearchForm);
+      </script>
+    </body>
+</html>

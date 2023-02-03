@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 0</title>
+        <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+
+    </head>
+
+    <body>
+
+      <script type="application/javascript">
+
+        function replaceFamilyTree(){
+          $('tbody').html('<tr><td>Gerard</td><td>Bonissa</td></tr>');
+        }
+
+        function createFamilyTree(){
+          $('body').append('<table><thead><tr><th>Firstname</th><th>Lastname</th></tr></thead></table>');
+          $('table').append('<tbody></tbody>');
+        }
+
+        function addNewMember(firstName, lastName){
+          $('tbody').append('<tr></tr>');
+            $('tbody > tr:last-child').append('<td></td>', '<td></td>', '<td></td>');
+            $('tbody > tr:last-child > td:first-child').text(firstName);
+            $('tbody > tr:last-child > td:nth-child(2)').text(lastName);
+            $('tbody > tr:last-child > td:nth-child(3)').text('(x)');
+            $('tbody > tr:last-child > td:nth-child(3)').css('background-color', 'orange');
+            $('tbody > tr:last-child > td:nth-child(3)').click(function() {
+                $(this).parent().remove();
+              });
+        }
+
+
+        createFamilyTree();
+        addNewMember('Guillaume', 'Salva');
+        addNewMember('Arielle', 'Snizt');
+        addNewMember('Fanette', 'Snizt');
+        addNewMember('Gerard', 'Snizt');
+        addNewMember('Victor', 'Salva');
+
+      </script>
+    </body>
+</html>
